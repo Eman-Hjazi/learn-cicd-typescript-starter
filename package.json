@@ -21,7 +21,7 @@
     "tsx": "^4.19.2",
     "typescript": "^5.6.3",
     "vitest": "^3.0.0",
-    "@vitest/coverage-v8": "latest"
+    "@vitest/coverage-v8": "^3.0.0"  
   },
   "dependencies": {
     "@libsql/client": "^0.14.0",
