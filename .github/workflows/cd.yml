@@ -38,14 +38,14 @@ jobs:
 
       - name: 'Build and Push to Artifact Registry'
         run: |
-          gcloud builds submit --tag europe-west4-docker.pkg.dev/qwiklabs-gcp-01-b0e586756a1e/notely-ar-repo/notely:latest .
+          gcloud builds submit --tag europe-west4-docker.pkg.dev/qwiklabs-gcp-02-23f44dd2dae4/notely-ar-repo/notely:latest .
 
       - name: 'Deploy to Cloud Run'
         run: |
           gcloud run deploy notely \
-            --image europe-west4-docker.pkg.dev/qwiklabs-gcp-01-b0e586756a1e/notely-ar-repo/notely:latest \
+            --image europe-west4-docker.pkg.dev/qwiklabs-gcp-02-23f44dd2dae4/notely-ar-repo/notely:latest \
             --region europe-west4 \
             --allow-unauthenticated \
-            --project qwiklabs-gcp-01-b0e586756a1e \
+            --project qwiklabs-gcp-02-23f44dd2dae4 \
             --max-instances=4 \
             --set-env-vars DATABASE_URL=${{ secrets.DATABASE_URL }}
