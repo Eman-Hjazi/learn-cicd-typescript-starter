@@ -15,7 +15,6 @@ jobs:
       - name: Check out code
         uses: actions/checkout@v4
       
-  
       - name: Set up Node
         uses: actions/setup-node@v4
         with:
@@ -39,15 +38,14 @@ jobs:
 
       - name: 'Build and Push to Artifact Registry'
         run: |
-        
-          gcloud builds submit --tag us-east1-docker.pkg.dev/qwiklabs-gcp-04-904850837633/notely-ar-repo/notely:latest .
+          gcloud builds submit --tag europe-west4-docker.pkg.dev/qwiklabs-gcp-01-b0e586756a1e/notely-ar-repo/notely:latest .
 
       - name: 'Deploy to Cloud Run'
         run: |
           gcloud run deploy notely \
-            --image us-east1-docker.pkg.dev/qwiklabs-gcp-04-904850837633/notely-ar-repo/notely:latest \
-            --region us-east1 \
+            --image europe-west4-docker.pkg.dev/qwiklabs-gcp-01-b0e586756a1e/notely-ar-repo/notely:latest \
+            --region europe-west4 \
             --allow-unauthenticated \
-            --project qwiklabs-gcp-04-904850837633 \
+            --project qwiklabs-gcp-01-b0e586756a1e \
             --max-instances=4 \
             --set-env-vars DATABASE_URL=${{ secrets.DATABASE_URL }}
